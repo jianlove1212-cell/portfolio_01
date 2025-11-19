@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import url(reset.css);
+
+/*375*/
+@media all and (max-width:375px){
+
+    #header,.container,.footer,.subMenuWrap{ width: 100%; position: relative;}
+    .subMenuWrap,  #wrapper .section_h{display: none}
+    .contents .frmsearch select{ width:100px }
+    .contents .frmsearch{margin-top: 40px;}
+    .contents .frmsearch .it{width: 150px; }
+    .contents .frmsearch .searchBtn{width: 60px;}
+    .photoList{}
+    .contents .photoList ul li{width: 49%}
+    
+	
+	
+#container .brandWrap .brandInner{width: 50%;}
+#container .brandWrap .brandInner h3 a{color:#571c01; font-size: 0.7rem;}
+#container .brandWrap .brandInner strong{padding: 3px 0 10px; ; display: inline-block}
+#container .brandWrap .brandInner strong a{color:#571c01; font-size: 1rem; font-weight: 700;letter-spacing: -0.09rem}
+#container .brandWrap .brand .brandInner p{ font-size:0.67rem}
+#container .brandWrap .brand span{float: right; margin:20% 2% 0;width: 40%; text-align: right}
+#container .brandWrap .brand span img{width: 100%;}
+
+    
+.productWrap .productInner{margin:10% auto; }   
+.productWrap .productInner h2{font-size: 1rem; font-weight: 100; letter-spacing: -0.09rem;}
+.productWrap .productInner P{margin: 6% 0 2%;font-size: 0.8rem}
+.productWrap .productInner span{font-size: 1.2rem;font-weight: 900; display: block; padding: 1% 0 5%;position: relative;    letter-spacing: -0.1rem;}
+.productWrap .productInner span:after{position:absolute;bottom:-3px;content:'';width: 6%; left: 46%; ;background-color:#999; height:3px;transform:translate3d(0,0,0); transition:all 0.3s ease; }
+
+.mainNewsWrap .inner .storeWrap1,.mainNewsWrap .inner .storeWrap2 {width: 92%;margin: 2% 4%}
+ 
+.snsWrap .snsInner h2{font-size: 1.2rem; font-weight: 900;    letter-spacing: -0.09rem;}
+.snsWrap .snsInner span{font-size: 0.8rem; padding: 1% 0 6%}	
+	
+	
+	
+ 
+    
+}
