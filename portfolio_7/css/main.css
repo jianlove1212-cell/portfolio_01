@@ -1,0 +1,255 @@
+@charset "utf-8";
+@import url(reset.css);
+@import url(header.css);
+@import url(footer.css);
+@import url(style.css);
+
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5 {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.section1 #scMark {
+	position: absolute;
+	left: calc(50% - 10px);
+	bottom: 30px;
+	color: #1833ff;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 2px;
+	transition: 2s ease-out;
+	-webkit-transition: 2s ease-out;
+	-moz-transition: 2s ease-out;
+}
+
+.scMark_line {
+	position: relative;
+	margin: 0 0 10px 40%;
+	width: 1px;
+	height: 20px;
+	background: #1833ff;
+}
+
+
+.foot1 {
+	position: absolute;
+	left: -60px;
+	bottom: calc(50% - 30px);
+	height: 50px;
+	font-size: 13px;
+	letter-spacing: 1px;
+	color:
+		/* #4829fd;*/
+		#1833ff;
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+	opacity: 1;
+}
+
+
+.title {
+	position: relative;
+	padding-top: 10%;
+}
+
+.title .number {
+	text-transform: none;
+	position: absolute;
+	top: 3vw;
+	left: 3vw;
+	display: block;
+	font-size: 1.8vw;
+	color: rgb(25, 25, 25);
+	font-weight: 600;
+	font-family: 'Bentham', serif;
+}
+
+.title .number span {
+	font-family: 'Noto Serif', serif;
+	font-size: 1.9vw
+}
+
+.title h2 {
+	position: relative;
+	z-index: 999;
+	display: block;
+	font-size: 7vw;
+	line-height: 1.025em;
+	margin: 0 0 0 19%;
+	width: 68.28287722%;
+	font-weight: 900;
+	font-family: 'Bentham', serif;
+}
+
+.section6 .title h2 span {
+	font-size: 10vw;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	text-transform: uppercase;
+	margin-bottom: 2%;
+
+}
+
+.section6 .title {
+	padding-top: 15%
+}
+
+.section6 h2 {
+	font-size: 6.5vw;
+
+	margin-left: 29%;
+	text-transform: none;
+	color: #8d8d8d;
+
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+}
+
+
+
+
+/*
+
+.section6 .title h2 {
+	font-size: 6vw; 
+	font-weight: 900;
+	font-family: 'Nanum Gothic', '나눔고딕', '돋움', dotum, sans-serif;  
+	text-transform: none;
+	margin-bottom: 2%;
+	color: #fff;
+	margin: 20% 0 75px 20%;
+}
+
+*/
+
+/*.section3 ,.section3 h2 a,.section3 .title .number{color: #fff}*/
+.title .line {
+	display: block;
+	margin: 3% 0 3% 19%;
+
+	height: 4px;
+	width: 15.5405%;
+	background-color: rgb(100, 54, 255);
+
+}
+
+/*
+.section3 .title .line{
+ background-color:#ff3366#fff;
+}
+
+.section4 .title .line{
+ background-color:#c6e1e8;
+}
+
+.section5 .title .line{
+ background-color:#4264fb;
+
+}
+*/
+
+
+
+.section6 {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+.title_inner {
+	width: 24%;
+	margin: 0 0 0 19%;
+}
+
+.title p {
+	font-size: 1.1vw;
+	letter-spacing: -1;
+	font-weight: lighter;
+
+	line-height: 1.8;
+	font-weight: 400;
+}
+
+.title .title_em {
+	font-weight: 900;
+	margin-top: 1.6%;
+}
+
+.title_img {
+	/*position: absolute; bottom: 18%;right: 8%;*/
+	box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 16%;
+	right: 18%
+}
+
+.title_img_Phone {
+	/*position: absolute; bottom: 10%;right: -20%;*/
+	/* box-shadow: 25px 25px 25px rgba(0, 0, 0, .2);*/
+	box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 16%;
+	right: 18%
+}
+
+.title_img_Phone img {
+	/*width: 76%;display: block;    animation:title_img 7s ease-in-out infinite alternate;*/
+	width: 100%;
+	display: block;
+	animation: title_img 7s ease-in-out infinite alternate;
+}
+
+.title_img a img {
+	width: 100%;
+	display: block;
+	animation: title_img 7s ease-in-out infinite alternate;
+}
+
+
+@keyframes title_img {
+	0% {
+		transform: rotate(0deg) translate(0px, 0)
+	}
+
+	20% {
+		transform: rotate(0deg) translate(10px, 10px)
+	}
+
+	50% {
+		transform: rotate(0deg) translate(0px, 0px)
+	}
+
+	70% {
+		transform: rotate(0deg) translate(-1px, 10px)
+	}
+
+	100% {
+		transform: rotate(0deg) translate(0px, 0)
+	}
+}
+
+
+/*footer*/
+.footer {
+	width: 100%;
+	height: 6vw;
+	background-color: #b5b5b5;
+	position: absolute;
+	bottom: 0;
+}
+
+.footer ul li {
+	font-size: 1vw;
+	font-weight: 700;
+	text-align: center;
+	line-height: 6vw;
+	color: rgb(255, 255, 255)
+}
