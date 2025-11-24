@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/*font*/
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css");
+
+
+
+body,select,input {font-size: 14px;font-family:'NanumBarunGothic''나눔바른고딕', '돋움', dotum, sans-serif;color: #222; letter-spacing:-0.02em;  }
+body,div,h1,h2,h3,ul,li,address,span,p,a,img,label,button,form,select,input,fieldset,legend,table,tbody,caption,col,th,tr,td,span,label,strong,select {padding: 0;margin: 0; box-sizing: border-box;}
+img,select,input,button{vertical-align: middle;}
+ul{list-style: none;}
+img,input, button, select, textarea{vertical-align:middle;}
+img, fieldset{border:0;}
+.table tr td{vertical-align:middle;}
+address{font-style: normal}
+h1,h2,h3{font-size: 1em;font-weight: 400}
+table{border-collapse: collapse}
+
+a:link,
+a:visited {text-decoration: none;color: #222;}
+a:hover,
+a:active,
+a:focus {color: #07c;text-decoration: underline;}
+
+.layout{position:relative; width: 1200px;height: 100%; margin: 0 auto; }
+.skip,legend,caption{width: 1px; height:1px; overflow:hidden; font-size:0; line-height:0; text-indent:-9999em;}
+#skipMenu {position: absolute; width: 100%;  }
+#skipMenu a {position: absolute;top: -100px;}
+#skipMenu a:hover,
+#skipMenu a:active,
+#skipMenu a:focus {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: block;
+    /*a 태그는 인라인 요소라서*/
+    text-align: center;
+    padding: 10px 0;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
