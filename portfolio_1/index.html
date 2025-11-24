@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>강서구청홈페이지</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="keywords" content="키워드넣기" />
+    <meta name="description" content="설명넣기" />
+    <meta name="author" content="저자넣기" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+     <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        
+        /*****************************************************************
+ *  메인 슬라이드 (visual)
+ *****************************************************************/
+$(document).ready(function () {
+
+    /* 슬라이드 설정 */
+    var photo_list = $('.list_con li');     // 슬라이드 목록
+    var photo_list_left = $('.prev_pop');   // 이전 버튼
+    var photo_list_right = $('.next_pop');  // 다음 버튼
+    var photo_list_stop = $(".stop_pop");   // 정지 버튼
+    var photo_list_current_p = 0;           // 현재 슬라이드 번호
+    var photo_paging = photo_list.length;   // 슬라이드 개수 자동 감지
+    var d_time = 3000;                      // 자동재생 시간
+    var clearenter;                         // interval 저장
+
+    $("#slide_totalNum2").text(photo_paging); // 총 개수 표시
+
+    // 첫 슬라이드 표시
+    photo_list.hide().eq(0).addClass("on").show();
+    $("#slide_totalNum1").text(1);
+
+    /* 슬라이드 전환 함수 */
+    function photolist_show(num) {
+        photo_list.removeClass("on").hide();
+        photo_list.eq(num).addClass("on").show();
+        $("#slide_totalNum1").text(num + 1);
+    }
+
+    /* 자동재생 */
+    function photolist_play() {
+        photo_list_current_p = (photo_list_current_p + 1) % photo_paging;
+        photolist_show(photo_list_current_p);
+    }
+
+    clearenter = setInterval(photolist_play, d_time);
+
+    /* 다음 버튼 */
+    photo_list_right.on('click', function () {
+        clearInterval(clearenter);
+        photo_list_current_p = (photo_list_current_p + 1) % photo_paging;
+        photolist_show(photo_list_current_p);
+    });
+
+    /* 이전 버튼 */
+    photo_list_left.on('click', function () {
+        clearInterval(clearenter);
+        photo_list_current_p =
+            (photo_list_current_p - 1 + photo_paging) % photo_paging;
+        photolist_show(photo_list_current_p);
+    });
+
+    /* 정지/재생 버튼 */
+    photo_list_stop.on('click', function () {
+        if ($(this).hasClass('playing')) {
+            // 현재 자동재생 중 → 정지
+            clearInterval(clearenter);
+            $(this).removeClass('playing').addClass('stopped').text("재생");
+        } else {
+            // 정지 상태 → 재생
+            clearenter = setInterval(photolist_play, d_time);
+            $(this).removeClass('stopped').addClass('playing').text("정지");
+        }
+    });
+
+});
+
+/*****************************************************************
+ *  배너 롤링
+ *****************************************************************/
+$(document).ready(function () {
+
+    var menuWidth = 176;     // 배너 하나 크기
+    var sid;
+
+    function auto(dis) {
+        var list = $('.banner_link');
+
+        if (list.is(':animated')) return; // 애니메이션 중이면 중복 실행 금지
+
+        if (dis === 'prev') {
+            list.animate({ left: '-' + menuWidth + 'px' }, 600, function () {
+                list.append(list.find('li:first'));
+                list.css('left', '0');
+            });
+        } else {
+            list.prepend(list.find('li:last'));
+            list.css('left', '-' + menuWidth + 'px');
+            list.animate({ left: '0' }, 600);
+        }
+    }
+
+    sid = setInterval(function () { auto('prev'); }, 3000);
+
+    // 이전 버튼
+    $('.prevBtn').on('click', function (e) {
+        e.preventDefault();
+        clearInterval(sid);
+        auto('prev');
+        sid = setInterval(function () { auto('prev'); }, 3000);
+    });
+
+    // 다음 버튼
+    $('.nextBtn').on('click', function (e) {
+        e.preventDefault();
+        clearInterval(sid);
+        auto('next');
+        sid = setInterval(function () { auto('prev'); }, 3000);
+    });
+
+    // 정지/재생
+    $('.stopBtn a').on('click', function (e) {
+        e.preventDefault();
+
+        if ($(this).hasClass('pause')) {
+            // 일시정지 → 재생으로 변경
+            clearInterval(sid);
+            $(this).removeClass('pause').addClass('play').text("재생");
+        } else {
+            // 정지 상태 → 재생 시작
+            sid = setInterval(function () { auto('prev'); }, 3000);
+            $(this).removeClass('play').addClass('pause').text("정지");
+        }
+    });
+
+});
+
+      
+    </script>
+
+
+</head>
+
+<body>
+    <div id="skipMenu">
+        <a href="gnb">주메뉴 바로가기</a>
+        <a href="container">본문바로가기</a>
+    </div>
+    <div id="wrapper">
+        <!--w100%-->
+        <div class="top_wrap">
+            <!--w100%-->
+            <div class="top_menu cleafix">
+                <!--1240px-->
+                <ul class="top_list1 cleafix">
+                    <li><a title="새창열림" href="#" target="_blank">강서구청</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">강서관광</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">의료관광특구</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">강서사이트</a></li>
+                </ul>
+                <div class="top_list_wrap">
+                    <ul class="top_list2 cleafix">
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">사이트맵</a></li>
+                        <li>
+                            <form method="post" action="#" name="langfrm" class="lang">
+                                <select name="lang" title="언어별 사이트 선택" class="langSelect">
+                                    <option value="">언어선택</option>
+                                    <option value="">영어</option>
+                                    <option value="">일어</option>
+                                    <option value="">중국어</option>
+                                </select>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- header start -->
+        <div class="header">
+            <!-- header_box start -->
+            <div class="header_box cleafix">
+                <h1 class="logo"><a href="index.html"><img src="images/logo.svg" alt="강서구청 로고" title="강서구청 로고" /></a></h1>
+                <!-- search_area start -->
+                <div class="search_area">
+                    <form id="formSearch1" name="formSearch" method="post" action="#">
+                        <fieldset>
+                            <legend>통합검색</legend>
+                            <label for="text_search">검색어 입력</label>
+                            <input type="text" id="text_search" name="searchQuery" title="검색어 입력" class="input_sch_txt " value="" />
+                            <input class="input_sch_btn" id="btn_search" type="image" alt="검색" src="images/icon_4.png" />
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- ### search_area end -->
+                <p class="weather"><img src="images/icon_5.png" alt="날씨 맑음 20, 미세먼지 좋음" title="날씨" /></p>
+            </div>
+        </div>
+        <!-- ### header_box end -->
+
+        <!-- gnb start -->
+        <div class="gnb_box">
+            <!--w100%-->
+            <div id="gnb" class="gnb">
+                <!--w100%-->
+                <h2 class="skip">주메뉴</h2>
+                <ul class="menu">
+                    <li><a href="sub_01.html">종합민원</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">주민신고</a></li>
+                                <li><a href="#">종합민원안내</a></li>
+                                <li><a href="#">나의신청내역</a></li>
+                                <li><a href="#">온라인민원신청</a></li>
+                                <li><a href="#">민원사무안내</a></li>
+                                <li><a href="#">참여공간</a></li>
+                                <li><a href="#">안전신문고</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_02.html">열린광장</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">구민제안</a></li>
+                                <li><a href="#">찾아가는 동주민센터</a></li>
+                                <li><a href="#">마을공동체</a></li>
+                                <li><a href="#">온라인신청</a></li>
+                                <li><a href="#">강서나눔과봉사</a></li>
+                                <li><a href="#">여론수렴</a></li>
+                                <li><a href="#">사이버반상회</a></li>
+                                <li><a href="#">장터마당</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_03.html">소식광장</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">공지/새소식</a></li>
+                                <li><a href="#">언론보도</a></li>
+                                <li><a href="#">강서구보</a></li>
+                                <li><a href="#">강서소식지</a></li>
+                                <li><a href="#">포토갤러리</a></li>
+                                <li><a href="#">입찰정보</a></li>
+                                <li><a href="#">공동주택 통합마당</a></li>
+                                <li><a href="#">마을세무사</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_02.html">생활정보</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">강서경제</a></li>
+                                <li><a href="#">강서환경</a></li>
+                                <li><a href="#">강서복지</a></li>
+                                <li><a href="#">강서생활</a></li>
+                                <li><a href="#">강서여성</a></li>
+                                <li><a href="#">강서교육</a></li>
+                                <li><a href="#">강서재난안전</a></li>
+                                <li><a href="#">스마트 강서지도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_01.html">행정정보</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">강서행정자료</a></li>
+                                <li><a href="#">정책실명제</a></li>
+                                <li><a href="#">재정정보</a></li>
+                                <li><a href="#">행정규제개혁</a></li>
+                                <li><a href="#">행정정보공개</a></li>
+                                <li><a href="#">법령/자치법규</a></li>
+                                <li><a href="#">행정서비스현장</a></li>
+                                <li><a href="#">통계정보</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_01.html">희망강서</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">열린구청장실</a></li>
+                                <li><a href="#">우리강서구</a></li>
+                                <li><a href="#">강서구현황</a></li>
+                                <li><a href="#">국내외교류현황</a></li>
+                                <li><a href="#">청사안내</a></li>
+                                <li><a href="#">구정현황</a></li>
+                                <li><a href="#">강서관내지도</a></li>
+                                <li><a href="#">강서상징</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_03.html">행정정보공개</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">사전정보공표</a></li>
+                                <li><a href="#">정보공개목록</a></li>
+                                <li><a href="#">비공개 대상정보</a></li>
+                                <li><a href="#">공공테이터 개방</a></li>
+                                <li><a href="#">서울시 정책지도</a></li>
+                                <li><a href="#">법령/자치법규</a></li>
+                                <li><a href="#">관계법령</a></li>
+                                <li><a href="#">재정운영절차</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <span class="bg_gnb"></span>
+        </div> <!-- gnb end -->
+
+        <div class="container" id="container">
+            <div class="main_Section1 clearfix">
+                <div class="visual_wp  ">
+                    <ul class="visual list_con">
+                        <li class="on"><a href="#"><img src="images/visual_04.png" alt="아이돌봄 서비스 안내" /></a></li>
+                        <li><a href="#"><img src="images/visual_02.png" alt="강서구 질병 관련 관내 소상공인지원대책" /></a></li>
+                        <li><a href="#"><img src="images/visual_03.png" alt="2021년 주민참여예산 160억 시민이 제안해 주세요" /></a></li>
+                        <li><a href="#"><img src="images/visual_01.jpg" alt="강서구통합도서관 안심 도서관 서비스 운영 운영시간: 2020.10.13(금) 운연서비스: 도서예약대출, 강서북페이백, 강서상호대차, 강서스마트도서관 강서구 전자도서관 서비스 운영내용: 서초구 통합도서관 홈페이지 참조 자세히 보기" /></a></li>
+                    </ul>
+                   
+                    
+                   <div class="ctrl_inform visual_btn_wp">
+								<ul class="fr visual_btn ">
+
+								    <!-- <li><button type="button" class="pause_pop" id="pause_pop"><span>알림판 일시정지</span></button></li> -->
+
+								  
+								    
+								      <li class="visual_btn_prev prev"><button type="button" class="prev_pop prev" id="prev_pop" aria-label="이전 슬라이드"><span>이전 알림판</span></button></li>
+								        <li class="visual_btn_stop  "><button type="button" class="stop_pop " id="stop_pop" aria-label="슬라이드 정지/재생"><span>알림판 정지</span></button></li>
+								    <li class="visual_btn_next next"><button type="button" class="next_pop next" id="next_pop" aria-label="다음 슬라이드"><span>다음 알림판</span></button></li>
+								     <li class="slide_total paging"><span id="slide_totalNum1">1</span><span class="line">/</span><span id="slide_totalNum2">0</span></li>
+								<!--    <li class="visual_btn_play"><button type="button" class="play_pop " id="play_pop"><span>알림판 재생</span></button></li>-->
+								</ul>
+							</div>
+                
+                </div>
+             
+                <div class="mayor_wp">
+                    <div class="mayor">
+                        <h3 class="skip">열린구청장수실</h3>
+                        <strong class="skip">안녕하세요 강서구청장 노현승입니다</strong>
+                        <ul>
+                            <li><a href="#">인사말</a></li>
+                            <li><a href="#">공약안내</a></li>
+                            <li><a href="#">현장스케치</a></li>
+                            <li><a href="#">열린구청장실</a></li>
+                        </ul>
+                    </div>
+                    <div class="mayor_btn">
+                        <ul>
+                            <li><a href="#" class="mayor_btn_1">청사안내</a></li>
+                            <li><a href="#" class="mayor_btn_2">직원소개</a></li>
+                            <li><a href="#" class="mayor_btn_3">오시는길</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="main_Section2">
+                <div class="main_section2_wp">
+                    <!--<div class="section2_header">
+                    <h2>민원실 안내</h2></div>-->
+                    <div class="quick_wp clearfix">
+                        <h3 class="skip">강서구 민원실 안내</h3>
+                        <div class="quick">
+                            <ul class="quick_meun clearfix">
+                                <li class="quick_icon_1"><a href="#">민원24</a></li>
+                                <li class="quick_icon_2"><a href="#">칭찬합니다</a></li>
+                                <li class="quick_icon_6"><a href="#">대형폐기물신청</a></li>
+                                <li class="quick_icon_4"><a href="#">주정차위반조회</a></li>
+                                <li class="quick_icon_5"><a href="#">여권안내</a></li>
+                                <li class="quick_icon_6"><a href="#">부동산정보열람</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_Section3">
+                <div class="section3_header">
+                    <h2>소식 민원정보</h2>
+                </div>
+                <div class="Section3_wp clearfix">
+                    <div class="area1_wp">
+                        <div id="tab1" class="notice">
+                            <ul class="notice_list clearfix tabMenu">
+                                <li>
+                                    <h3 class="on"><a href="#">시정소식</a></h3>
+                                    <ul class="board_list">
+                                        <li><a href="#" class="subject">2020 이웃과 함께하는 강서마을 장독대 참여자 모집 </a><span class="date">2020.11.31</span></li>
+                                        <li><a href="#" class="subject">2020 도시전환랩 실험 프로젝트 모집 공고 </a><span class="date">2020.11.29</span></li>
+                                        <li><a href="#" class="subject">'2020년 찾아가는 꼬마도시농부학교' 심사결과 발표 </a><span class="date">2020.11.25</span></li>
+                                        <li><a href="#" class="subject">지진안전시설물 인증 사업 수요 조사 안내 </a><span class="date">2020.11.16</span></li>
+                                        <li><a href="#" class="subject">서울시 베란다형 태양광 미니발전소 보급업체 선정공고 </a><span class="date">2020.11.12</span></li>
+                                    </ul>
+                                    <p class="more"><a href="#"><img src="images/icon-16.png" alt="공지사항 더보기" /></a></p>
+                                </li>
+                                <li>
+                                    <h3><a href="#" class="notice_list_a">행사안내</a></h3>
+                                    <ul class="board_list none">
+                                        <li><a href="#" class="subject">서울 강서구 문화시설 임시휴관 연장 안내 </a><span class="date">2020.11.12</span></li>
+                                        <li><a href="#" class="subject">영통자이 서울시 장애인 특별공급 서울시 기관추천 일정 안내 </a><span class="date">2020.11.10</span></li>
+                                        <li><a href="#" class="subject">물놀이형 수경시설 신고 및 관리 대상 확대 안내 </a><span class="date">2020.11.09</span></li>
+                                        <li><a href="#" class="subject">강서구 지역사회보장협의체 위원명단 공개 </a><span class="date">2020.11.07</span></li>
+                                        <li><a href="#" class="subject">2020년도 (재)강서구장학회 장학생 선발 안내 </a><span class="date">2020.11.03</span></li>
+                                    </ul>
+                                    <p class="more"><a href="#"><img src="images/icon-16.png" alt="행사안내 더보기" /></a></p>
+                                </li>
+                                <li>
+                                    <h3><a href="#" class="notice_list_a">입찰정보</a></h3>
+                                    <ul class="board_list none">
+                                        <li><a href="#" class="subject">2020 이웃과 함께하는 강서마을 장독대 참여자 모집 </a><span class="date">2020.11.31</span></li>
+                                        <li><a href="#" class="subject">2020 도시전환랩 실험 프로젝트 모집 공고 </a><span class="date">2020.11.29</span></li>
+                                        <li><a href="#" class="subject">'2020년 찾아가는 꼬마도시농부학교' 심사결과 발표 </a><span class="date">2020.11.25</span></li>
+                                        <li><a href="#" class="subject">지진안전시설물 인증 사업 수요 조사 안내 </a><span class="date">2020.11.16</span></li>
+                                        <li><a href="#" class="subject">서울시 베란다형 태양광 미니발전소 보급업체 선정공고 </a><span class="date">2020.11.12</span></li>
+                                    </ul>
+                                    <p class="more"><a href="#"><img src="images/icon-16.png" alt="공지사항 더보기" /></a></p>
+                                </li>
+                                <li>
+                                    <h3><a href="#" class="notice_list_a">고시</a></h3>
+                                    <ul class="board_list none">
+                                        <li><a href="#" class="subject">서울 강서구 문화시설 임시휴관 연장 안내 </a><span class="date">2020.11.12</span></li>
+                                        <li><a href="#" class="subject">영통자이 서울시 장애인 특별공급 서울시 기관추천 일정 안내 </a><span class="date">2020.11.10</span></li>
+                                        <li><a href="#" class="subject">물놀이형 수경시설 신고 및 관리 대상 확대 안내 </a><span class="date">2020.11.09</span></li>
+                                        <li><a href="#" class="subject">강서구 지역사회보장협의체 위원명단 공개 </a><span class="date">2020.11.07</span></li>
+                                        <li><a href="#" class="subject">2020년도 (재)강서구장학회 장학생 선발 안내 </a><span class="date">2020.11.03</span></li>
+                                    </ul>
+                                    <p class="more"><a href="#"><img src="images/icon-16.png" alt="행사안내 더보기" /></a></p>
+                                </li>
+                                <li>
+                                    <h3><a href="#" class="notice_list_a">공고</a></h3>
+                                    <ul class="board_list none">
+                                       <li><a href="#" class="subject">2020 이웃과 함께하는 강서마을 장독대 참여자 모집 </a><span class="date">2020.11.31</span></li>
+                                        <li><a href="#" class="subject">2020 도시전환랩 실험 프로젝트 모집 공고 </a><span class="date">2020.11.29</span></li>
+                                        <li><a href="#" class="subject">'2020년 찾아가는 꼬마도시농부학교' 심사결과 발표 </a><span class="date">2020.11.25</span></li>
+                                        <li><a href="#" class="subject">지진안전시설물 인증 사업 수요 조사 안내 </a><span class="date">2020.11.16</span></li>
+                                        <li><a href="#" class="subject">서울시 베란다형 태양광 미니발전소 보급업체 선정공고 </a><span class="date">2020.11.12</span></li>
+                                    </ul>
+                                    <p class="more"><a href="#"><img src="images/icon-16.png" alt="행사안내 더보기" /></a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gallery">
+                            <h3>강서 갤러리</h3>
+                            <ul>
+                                <li><a href="#"><img src="images/cont-3.png" alt="서울시 코로나19 영상회의 바로가기" /><strong>서울시 코로나19 영상회의</strong></a></li>
+                                <li><a href="#"><img src="images/cont-4.png" alt="겸재오름미술전 개막식" /><strong>겸재오름미술전 개막식</strong></a></li>
+                                <li><a href="#"><img src="images/cont-5.png" alt="영남향우회 성금 전달식" /><strong>영남향우회 성금 전달식</strong></a></li>
+                            </ul>
+                            <p class="more"><a href="#"><img src="images/icon-16.png" alt="갤러리 더보기" /></a></p>
+                        </div>
+                    </div>
+                    <div class="area2_wp">
+                        <div class="area2_01_wp clearfix">
+                            <div class="tv">
+                                <h3>강서TV</h3>
+                                <ul>
+                                    <li><a href="#"><img src="images/cont-1.png" alt="강서 tv 안심병원 운영 바로가기 " /><strong>안심병원 운영...</strong></a></li>
+                                </ul>
+                                <p class="tv_more"><a href="#"><img src="images/icon-16.png" alt="강서tv 더보기" /></a></p>
+                            </div>
+                            <div class="news">
+                                <h3>강서가치뉴스</h3>
+                                <ul>
+                                    <li><a href="#"><img src="images/cont-2.png" alt="강서가치뉴스 10호 바로가기 " /><strong>똑똑한 예방으로...</strong></a></li>
+                                </ul>
+                                <p class="tv_more"><a href="#"><img src="images/icon-16.png" alt="강서가치뉴스 더보기" /></a></p>
+
+                            </div>
+                        </div>
+                        <div class="area2_02_wp clearfix">
+                            <div class="webzine">
+                                <h3>주간강서까치</h3>
+                                <ul>
+                                    <li><a href="#"><img src="images/cont-6.png" alt="주간강서 11월 주간지 바로가기 " /><strong>우리 동네 약국 공적...</strong></a></li>
+                                </ul>
+                                <p class="tv_more"><a href="#"><img src="images/icon-16.png" alt="강서tv 더보기" /></a></p>
+
+
+                            </div>
+                            <div class="sns">
+                                <h3>강서SNS</h3>
+                                <ul>
+                                    <li><a href="#"><img src="images/cont-7.png" alt="마을과 과을 잊다 바로가기 " /><strong>마을과 마을을 잇다</strong><span>2020년 11월 20일</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_Section4">
+                <div class="section4_header">
+                    <h2>소식 민원정보</h2>
+                </div>
+                <div id="tab2" class="section4_wp">
+                    <ul class="mcb_bk clearfix tabMenu">
+                        <li class="on">
+                            <p class="po1"><a href="#">구민</a></p>
+                            <div>
+                                <ul class="po1_list clearfix">
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-17.png" alt="공통" /> <span>공통</span></dt>
+                                            <dd><a href="#">종합민원안내</a></dd>
+                                            <dd><a href="#">전자민원창구</a></dd>
+                                            <dd><a href="#">민원신고</a></dd>
+                                            <dd><a href="#">복지지도</a></dd>
+                                            <dd><a href="#">전문가상담</a></dd>
+                                            <dd><a href="#">여권신청</a></dd>
+                                            <dd><a href="#">자동차납부</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-18.png" alt="어르신" /> <span>어르신</span></dt>
+                                            <dd><a href="#">구청정보화교육</a></dd>
+                                            <dd><a href="#">노인무료급식사업</a></dd>
+                                            <dd><a href="#">기초연금</a></dd>
+                                            <dd><a href="#">서울재가관리사파견</a></dd>
+                                            <dd><a href="#">노인교실</a></dd>
+                                            <dd><a href="#">치매관리</a></dd>
+                                            <dd><a href="#">치매서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-19.png" alt="장애인" /> <span>장애인</span></dt>
+                                            <dd><a href="#">장애인등록</a></dd>
+                                            <dd><a href="#">생활안전지원</a></dd>
+                                            <dd><a href="#">발달장애인 운전연습장</a></dd>
+                                            <dd><a href="#">발달장애인 평생교육원</a></dd>
+                                            <dd><a href="#">장애인의비지원</a></dd>
+                                            <dd><a href="#">장애인지원</a></dd>
+                                            <dd><a href="#">장애인 복지</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-20.png" alt="저소득층" /> <span>저소득층</span></dt>
+                                            <dd><a href="#">국민기초생활 수급자</a></dd>
+                                            <dd><a href="#">서울형주택바우처지원</a></dd>
+                                            <dd><a href="#">자활사업운영</a></dd>
+                                            <dd><a href="#">임대주택안내</a></dd>
+                                            <dd><a href="#">푸드마켓</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">복지서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-21.png" alt="영유아/청소년" /> <span>영유아/청소년</span></dt>
+                                            <dd><a href="#">유아학비지원</a></dd>
+                                            <dd><a href="#">보육료지원</a></dd>
+                                            <dd><a href="#">가정양육수당 지원</a></dd>
+                                            <dd><a href="#">출산축하금 지원</a></dd>
+                                            <dd><a href="#">아이돌봄 지원사업</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">강서꿈나무</a></dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="po2"><a href="#">사업자</a></p>
+                            <div>
+                                <ul class="po1_list clearfix">
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-17.png" alt="공통" /> <span>공통</span></dt>
+                                            <dd><a href="#">종합민원안내</a></dd>
+                                            <dd><a href="#">전자민원창구</a></dd>
+                                            <dd><a href="#">민원신고</a></dd>
+                                            <dd><a href="#">복지지도</a></dd>
+                                            <dd><a href="#">전문가상담</a></dd>
+                                            <dd><a href="#">여권신청</a></dd>
+                                            <dd><a href="#">자동차납부</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-18.png" alt="어르신" /> <span>어르신</span></dt>
+                                            <dd><a href="#">구청정보화교육</a></dd>
+                                            <dd><a href="#">노인무료급식사업</a></dd>
+                                            <dd><a href="#">기초연금</a></dd>
+                                            <dd><a href="#">서울재가관리사파견</a></dd>
+                                            <dd><a href="#">노인교실</a></dd>
+                                            <dd><a href="#">치매관리</a></dd>
+                                            <dd><a href="#">치매서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-19.png" alt="장애인" /> <span>장애인</span></dt>
+                                            <dd><a href="#">장애인등록</a></dd>
+                                            <dd><a href="#">생활안전지원</a></dd>
+                                            <dd><a href="#">발달장애인 운전연습장</a></dd>
+                                            <dd><a href="#">발달장애인 평생교육원</a></dd>
+                                            <dd><a href="#">장애인의비지원</a></dd>
+                                            <dd><a href="#">장애인지원</a></dd>
+                                            <dd><a href="#">장애인 복지</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-20.png" alt="저소득층" /> <span>저소득층</span></dt>
+                                            <dd><a href="#">국민기초생활 수급자</a></dd>
+                                            <dd><a href="#">서울형주택바우처지원</a></dd>
+                                            <dd><a href="#">자활사업운영</a></dd>
+                                            <dd><a href="#">임대주택안내</a></dd>
+                                            <dd><a href="#">푸드마켓</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">복지서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-21.png" alt="영유아/청소년" /> <span>영유아/청소년</span></dt>
+                                            <dd><a href="#">유아학비지원</a></dd>
+                                            <dd><a href="#">보육료지원</a></dd>
+                                            <dd><a href="#">가정양육수당 지원</a></dd>
+                                            <dd><a href="#">출산축하금 지원</a></dd>
+                                            <dd><a href="#">아이돌봄 지원사업</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">강서꿈나무</a></dd>
+                                        </dl>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="po3"><a href="#">관광객</a></p>
+                            <div>
+                                <ul class="po1_list clearfix">
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-17.png" alt="공통" /> <span>공통</span></dt>
+                                            <dd><a href="#">종합민원안내</a></dd>
+                                            <dd><a href="#">전자민원창구</a></dd>
+                                            <dd><a href="#">민원신고</a></dd>
+                                            <dd><a href="#">복지지도</a></dd>
+                                            <dd><a href="#">전문가상담</a></dd>
+                                            <dd><a href="#">여권신청</a></dd>
+                                            <dd><a href="#">자동차납부</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-18.png" alt="어르신" /> <span>어르신</span></dt>
+                                            <dd><a href="#">구청정보화교육</a></dd>
+                                            <dd><a href="#">노인무료급식사업</a></dd>
+                                            <dd><a href="#">기초연금</a></dd>
+                                            <dd><a href="#">서울재가관리사파견</a></dd>
+                                            <dd><a href="#">노인교실</a></dd>
+                                            <dd><a href="#">치매관리</a></dd>
+                                            <dd><a href="#">치매서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-19.png" alt="장애인" /> <span>장애인</span></dt>
+                                            <dd><a href="#">장애인등록</a></dd>
+                                            <dd><a href="#">생활안전지원</a></dd>
+                                            <dd><a href="#">발달장애인 운전연습장</a></dd>
+                                            <dd><a href="#">발달장애인 평생교육원</a></dd>
+                                            <dd><a href="#">장애인의비지원</a></dd>
+                                            <dd><a href="#">장애인지원</a></dd>
+                                            <dd><a href="#">장애인 복지</a></dd>
+                                            <dd><a href="#">지방세납</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-20.png" alt="저소득층" /> <span>저소득층</span></dt>
+                                            <dd><a href="#">국민기초생활 수급자</a></dd>
+                                            <dd><a href="#">서울형주택바우처지원</a></dd>
+                                            <dd><a href="#">자활사업운영</a></dd>
+                                            <dd><a href="#">임대주택안내</a></dd>
+                                            <dd><a href="#">푸드마켓</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">복지서비스</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl>
+                                            <dt><img src="images/icon-21.png" alt="영유아/청소년" /> <span>영유아/청소년</span></dt>
+                                            <dd><a href="#">유아학비지원</a></dd>
+                                            <dd><a href="#">보육료지원</a></dd>
+                                            <dd><a href="#">가정양육수당 지원</a></dd>
+                                            <dd><a href="#">출산축하금 지원</a></dd>
+                                            <dd><a href="#">아이돌봄 지원사업</a></dd>
+                                            <dd><a href="#">건강지원</a></dd>
+                                            <dd><a href="#">강서꿈나무</a></dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="foot_layout">
+            <div class="banner">
+                <div class="banner_layout clearfix">
+                    <strong>배너</strong>
+                    <div class="control">
+                        <ul class="clearfix link_btn">
+                            <li class="banner_btn_prev prevBtn"><a href="#" class="prev">배너모음 이전</a></li>
+                            <!--<li class="visual_btn_play playBtn"><a href="#" class="play">배너모음 재생</a></li>-->
+                            	<!--<a href="#" class="d_btn_ctrl pause" id="stopBtn"><span>일시정지</span></a>-->
+  <li class=" stopBtn d_btn_ctrl"><a href
+                            ="#" class="stop pause">배너모음 정지</a></li>
+                            <!--
+                            <li class="banner_btn_stop stopBtn"><a href
+                            ="#" class="stop">배너모음 정지</a></li>-->
+                            
+                            <li class="banner_btn_next nextBtn"><a href="#" class="next">메인배너 다음</a></li>
+                        </ul>
+                    </div>
+                    <div class="grap site_link">
+                        <ul class="obj clearfix banner_link">
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_1.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_2.png" style="height:70px" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_3.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_4.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_5.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_3.png" alt="" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_wp">
+                <div class="layout clearfix">
+                    <div class="footer-info">
+                        <ul class="utile_wrap">
+                            <li><a href="#">원격지원</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">이메일집단수집거부</a></li>
+                            <li><a href="#">저작권정책</a></li>
+                            <li><a href="#">전화번호안내</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul>
+                        <address>(07658) 서울특별시 강서구 화곡로 302(화곡동) <span class="tel">전화 : 02-2600-6114</span> <span class="tel">팩스 : 02-2692-0635</span></address>
+                        <p class="copy">COPYRIGHT © 2018 GANGSEO-GU. ALL RIGHTS RESERVED.</p>
+                    </div>
+                    <div class="footlogo skip">강서구청</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+      <script src="./js/slider.js"></script>
+</body>
+
+</html>

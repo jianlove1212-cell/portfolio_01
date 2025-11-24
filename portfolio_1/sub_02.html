@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>강서구청 포토갤러리</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="keywords" content="키워드넣기" />
+    <meta name="description" content="설명넣기" />
+    <meta name="author" content="저자넣기" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*배너*/
+        $(document).ready(function() {
+            var menuWidth = 176 // 배너 하나의 크기 값이 들어간 변수
+            var sid;
+            sid = setInterval(auto, 3000, 'prev'); //'prev' 매개변수
+            function auto(dis) {
+                if (dis == 'prev') {
+                    if ($('.banner_link').is(':animated') == false) {
+                        $('.banner_link').animate({
+                            left: '-' + menuWidth + 'px'
+                        }, 600, function() {
+                            $('.banner_link').append($('.banner_link li:first'));
+                            $('.banner_link').css('left', '0px');
+                        })
+                    }
+
+                } else {
+                    if ($('.banner_link').is(':animated') == false) {
+                        $('.banner_link').prepend($('.banner_link li:last'));
+                        $('.banner_link').css('left', '-' + menuWidth + 'px');
+                        $('.banner_link').animate({
+                            left: '0'
+                        }, 600);
+                    }
+                }
+            }
+            /*<-왼쪽버튼*/
+            $('.prevBtn').on('click', function(e) { //이동후에 붙이틑 작을 하는 것
+                e.preventDefault(); //이벤트를 막아 두는 것\
+                clearInterval(sid);
+                sid = setInterval(auto, 3000, 'prev');
+            })
+
+            /*오른쪽버튼->*/
+            $('.nextBtn').on('click', function(e) { //붙이는 작업후에 이동하는 작업
+                e.preventDefault();
+                clearInterval(sid);
+                sid = setInterval(auto, 3000, 'next');
+            })
+
+
+            $('.pause').on('click', function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('pause') == true) {
+                    clearInterval(sid);
+                    $(this).removeClass('pause');
+                    $(this).addClass('play');
+                } else {
+                    clearInterval(sid);
+                    sid = setInterval(auto, 3000, 'prev')
+                    $(this).removeClass('play');
+                    $(this).addClass('pause');
+                }
+            })
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <div id="skipMenu">
+        <a href="gnb">주메뉴 바로가기</a>
+        <a href="container">본문바로가기</a>
+    </div>
+    <div id="wrapper">
+        <div class="top_wrap">
+            <!--w100%-->
+            <div class="top_menu cleafix">
+                <!--1240px-->
+                <ul class="top_list1 cleafix">
+                    <li><a title="새창열림" href="#" target="_blank">강서구청</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">강서관광</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">의료관광특구</a></li>
+                    <li><a title="새창열림" href="#" target="_blank">강서사이트</a></li>
+                </ul>
+                <div class="top_list_wrap">
+                    <ul class="top_list2 cleafix">
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">사이트맵</a></li>
+                        <li>
+                            <form method="post" action="#" name="langfrm" class="lang">
+                                <select name="lang" title="언어별 사이트 선택" class="langSelect">
+                                    <option value="">언어선택</option>
+                                    <option value="">영어</option>
+                                    <option value="">일어</option>
+                                    <option value="">중국어</option>
+                                </select>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- header start -->
+        <div class="header">
+            <!-- header_box start -->
+            <div class="header_box cleafix">
+                <h1 class="logo"><a href="index.html"><img src="images/logo.svg" alt="강서구청 로고" title="강서구청 로고" /></a></h1>
+                <!-- search_area start -->
+                <div class="search_area">
+                    <form id="formSearch1" name="formSearch" method="post" action="#">
+                        <fieldset>
+                            <legend>통합검색</legend>
+                            <label for="text_search">검색어 입력</label>
+                            <input type="text" id="text_search" name="searchQuery" title="검색어 입력" class="input_sch_txt " value="" />
+                            <input class="input_sch_btn" id="btn_search" type="image" alt="검색" src="images/icon_4.png" />
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- ### search_area end -->
+                <p class="weather"><img src="images/icon_5.png" alt="날씨 맑음 20, 미세먼지 좋음" title="날씨" /></p>
+            </div>
+        </div>
+        <!-- ### header_box end -->
+
+        <!-- gnb start -->
+        <div class="gnb_box">
+            <!--w100%-->
+            <div id="gnb" class="gnb">
+                <!--w100%-->
+                <h2 class="skip">주메뉴</h2>
+                <ul class="menu">
+                    <li><a href="sub_01.html">종합민원</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">주민신고</a></li>
+                                <li><a href="#">종합민원안내</a></li>
+                                <li><a href="#">나의신청내역</a></li>
+                                <li><a href="#">온라인민원신청</a></li>
+                                <li><a href="#">민원사무안내</a></li>
+                                <li><a href="#">참여공간</a></li>
+                                <li><a href="#">안전신문고</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_02.html">열린광장</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">구민제안</a></li>
+                                <li><a href="#">찾아가는 동주민센터</a></li>
+                                <li><a href="#">마을공동체</a></li>
+                                <li><a href="#">온라인신청</a></li>
+                                <li><a href="#">강서나눔과봉사</a></li>
+                                <li><a href="#">여론수렴</a></li>
+                                <li><a href="#">사이버반상회</a></li>
+                                <li><a href="#">장터마당</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_03.html">소식광장</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">공지/새소식</a></li>
+                                <li><a href="#">언론보도</a></li>
+                                <li><a href="#">강서구보</a></li>
+                                <li><a href="#">강서소식지</a></li>
+                                <li><a href="#">포토갤러리</a></li>
+                                <li><a href="#">입찰정보</a></li>
+                                <li><a href="#">공동주택 통합마당</a></li>
+                                <li><a href="#">마을세무사</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_02.html">생활정보</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">강서경제</a></li>
+                                <li><a href="#">강서환경</a></li>
+                                <li><a href="#">강서복지</a></li>
+                                <li><a href="#">강서생활</a></li>
+                                <li><a href="#">강서여성</a></li>
+                                <li><a href="#">강서교육</a></li>
+                                <li><a href="#">강서재난안전</a></li>
+                                <li><a href="#">스마트 강서지도</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_01.html">행정정보</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">강서행정자료</a></li>
+                                <li><a href="#">정책실명제</a></li>
+                                <li><a href="#">재정정보</a></li>
+                                <li><a href="#">행정규제개혁</a></li>
+                                <li><a href="#">행정정보공개</a></li>
+                                <li><a href="#">법령/자치법규</a></li>
+                                <li><a href="#">행정서비스현장</a></li>
+                                <li><a href="#">통계정보</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_02.html">희망강서</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">열린구청장실</a></li>
+                                <li><a href="#">우리강서구</a></li>
+                                <li><a href="#">강서구현황</a></li>
+                                <li><a href="#">국내외교류현황</a></li>
+                                <li><a href="#">청사안내</a></li>
+                                <li><a href="#">구정현황</a></li>
+                                <li><a href="#">강서관내지도</a></li>
+                                <li><a href="#">강서상징</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="sub_03.html">행정정보공개</a>
+                        <div>
+                            <ul class="smenu_1">
+                                <li><a href="#">사전정보공표</a></li>
+                                <li><a href="#">정보공개목록</a></li>
+                                <li><a href="#">비공개 대상정보</a></li>
+                                <li><a href="#">공공테이터 개방</a></li>
+                                <li><a href="#">서울시 정책지도</a></li>
+                                <li><a href="#">법령/자치법규</a></li>
+                                <li><a href="#">관계법령</a></li>
+                                <li><a href="#">재정운영절차</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <span class="bg_gnb"></span>
+        </div> <!-- gnb end -->
+
+
+        <div class="sub1_layout">
+            <div class="sub_background"></div>
+            <div class="mene_wrap layout cleafix">
+                <!--left-->
+                <div class="lnb_wrap">
+                    <div class="title_wrap">
+                        <span>GANGSEO-GU</span>
+                        <strong>소식광장</strong>
+                    </div>
+                    <ul id='snb' class="left_menu">
+                        <li><a href="#" class="on"><span>공지사항</span></a></li>
+                        <li><a href="#"><span>자유게시판</span></a></li>
+                        <li><a href="#"><span>포토갤러리</span></a></li>
+                        <li><a href="#"><span>구민알뜰장터</span></a></li>
+                        <li><a href="#"><span>칭찬합시다</span></a></li>
+                        <li><a href="#"><span>통화연결음 서비스</span></a></li>
+                        <li><a href="#"><span>음원자료실</span></a></li>
+                    </ul>
+                </div>
+                <!--right-->
+                <div class="contents_wrap">
+                    <div class="location_wrap cleafix">
+                        <div class="location">
+                            <h2 class="page_title">공지사항</h2>
+                            <!-- 유틸 시작 -->
+                            <div class="utile">
+                                <ul class="location_wrap cleafix">
+                                    <li class="n1 navi_home"><a href="#">HOME</a></li>
+                                    <li class="n2"><a href="#">소식광장</a></li>
+                                    <li class="n3"><a href="#" class='navi_ov'>공지사항</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 유틸 끝 -->
+                    </div>
+                    <form name="Form" method="post" action="#">
+                        <fieldset>
+                            <legend>게시물 검색</legend>
+                            <div class="search clearfix">
+                                <div class="count">
+                                    <span>
+                                        <div class='bd_total'>총 <strong>25</strong>건 / 오늘 <strong>0</strong>건</div>
+                                    </span>
+                                </div>
+
+                                <div class="search_inner">
+                                    <div class="fieldset">
+                                        <div class="search_select">
+                                            <!-- select추가시 -->
+                                            <span>
+                                                <select id='findItem' title='검색 카테고리 선택' name='skey'>
+                                                    <option value=''>제목</option>
+                                                    <option value=''>내용</option>
+                                                    <option value=''>작성자</option>
+                                                </select> </span>
+                                            <!-- select추가시 -->
+                                        </div>
+                                        <div class="search_text">
+                                            <span><input type="text" name="sval" value="" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요" class="form-control"></span>
+                                        </div>
+                                        <div class="search_btn">
+                                            <span class="btn_submit"><input type="submit" value="검색"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <!--게시판시작-->
+                    <div class="notice_wrap">
+                        <table class="notice_list table" summary="공지사항 게시판입니다. 글번호, 제목, 작성자, 첨부파일, 조회수, 작성일로 구분하여 설명합니다.">
+                            <caption>강동구 구인게시판</caption>
+                            <colgroup>
+                                <col style="width:12%" ;>
+                                <col style="width:auto" ;>
+                                <col style="width:10%" ;>
+                                <col style="width:12%" ;>
+                                <col style="width:15%" ;>
+                            </colgroup>
+                            <thead class="thead_list">
+                                <tr>
+                                    <th scope="col">글번호</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">조회수</th>
+                                    <th scope="col">작성일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">강서구 시설관리공단 직원 공개채용</a></td>
+                                    <td class="wrt">한*자</td>
+                                    <td class="cnt">13</td>
+                                    <td class="date">2020-10-21</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1232</td>
+                                    <td class="notice_title"><a href="#">마을평상 다소곳 설치장소 모집</a></td>
+                                    <td class="wrt">박*자</td>
+                                    <td class="cnt">63</td>
+                                    <td class="date">2020-10-10</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">서울 강북구 칸타빌수유팰리스 서울시</a></td>
+                                    <td class="wrt">한*이</td>
+                                    <td class="cnt">12</td>
+                                    <td class="date">2020-10-09</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">우장테니스장 2020년 4월분 정기 추첨</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">을평상 다소곳 설치장소 모집</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">우장테니스장 2020년 4월분 정기 추첨</a></td>
+                                    <td class="wrt">김*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">서울 강북구 칸타빌수유팰리스 서울시</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">우장테니스장 2020년 4월분 정기 추첨</a></td>
+                                    <td class="wrt">박*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">마을평상 다소곳 설치장소 모집</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">강서구 시설관리공단 직원 공개채용</a></td>
+                                    <td class="wrt">성*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">서울 강북구 칸타빌수유팰리스 서울시</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">마을평상 다소곳 설치장소 모집</a></td>
+                                    <td class="wrt">이*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr>
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">강서구 시설관리공단 직원 공개채용</a></td>
+                                    <td class="wrt">박*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+                                <tr class="border_botton">
+                                    <td class="ntt_no">1233</td>
+                                    <td class="notice_title"><a href="#">우장테니스장 2020년 4월분 정기 추첨</a></td>
+                                    <td class="wrt">최*정</td>
+                                    <td class="cnt">68</td>
+                                    <td class="date">2020-10-08</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <div class="text_center">
+                            <ul class="pagination">
+                                <li class="page"><a href="#" class="sr-only1"><span class="skip">첫번째페이지</span></a></li>
+                                <li class="page"><a href="#" class="sr-only2"><span class="skip">이전페이지</span></a></li>
+                                <li class="page"><a href="#">1</a></li>
+                                <li class="page"><a href="#">2</a></li>
+                                <li class="page"><a href="#">3</a></li>
+                                <li class="page"><a href="#">4</a></li>
+                                <li class="page"><a href="#">5</a></li>
+                                <li class="page"><a href="#" class="sr-only3"><span class="skip">이전페이지</span></a></li>
+                                <li class="page"><a href="#" class="sr-only4"><span class="skip">마지막페이지</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot_layout">
+            <div class="banner">
+                <div class="banner_layout clearfix">
+                    <strong>배너</strong>
+                    <div class="control">
+                        <ul class="clearfix link_btn">
+                            <li class="banner_btn_prev prevBtn"><a href="#" class="prev">배너모음 이전</a></li>
+                            <!--<li class="visual_btn_play playBtn"><a href="#" class="play">배너모음 재생</a></li>-->
+                            <!--<a href="#" class="d_btn_ctrl pause" id="stopBtn"><span>일시정지</span></a>-->
+                            <li class=" stopBtn d_btn_ctrl"><a href="#" class="stop pause">배너모음 정지</a></li>
+                            <!--
+                            <li class="banner_btn_stop stopBtn"><a href
+                            ="#" class="stop">배너모음 정지</a></li>-->
+
+                            <li class="banner_btn_next nextBtn"><a href="#" class="next">메인배너 다음</a></li>
+                        </ul>
+                    </div>
+                    <div class="grap site_link">
+                        <ul class="obj clearfix banner_link">
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_1.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_2.png" style="height:70px" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_3.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_4.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_5.png" alt="" /></a></li>
+                            <li class="item"><a href="#" target="_blank" title="새창열림"><img src="images/banner_3.png" alt="" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_wp">
+                <div class="layout clearfix">
+                    <div class="footer-info">
+                        <ul class="utile_wrap">
+                            <li><a href="#">원격지원</a></li>
+                            <li><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">이메일집단수집거부</a></li>
+                            <li><a href="#">저작권정책</a></li>
+                            <li><a href="#">전화번호안내</a></li>
+                            <li><a href="#">오시는길</a></li>
+                        </ul>
+                        <address>(07658) 서울특별시 강서구 화곡로 302(화곡동) <span class="tel">전화 : 02-2600-6114</span> <span class="tel">팩스 : 02-2692-0635</span></address>
+                        <p class="copy">COPYRIGHT © 2018 GANGSEO-GU. ALL RIGHTS RESERVED.</p>
+                    </div>
+                    <div class="footlogo skip">강서구청</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
