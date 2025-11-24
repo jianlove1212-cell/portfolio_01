@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>파리바게트</title>
+	<meta name="robots" content="noindex, nofollow" />
+	<meta name="keywords" content="키워드넣기" />
+	<meta name="description" content="설명넣기" />
+	<meta name="author" content="저자넣기" />
+	<!--    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">-->
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<!--모바일-->
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<!--css-->
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<!--제이쿼리-->
+	<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fitvids.js"></script>
+	<!--bxslider-->
+	<script type="text/javascript" src="js/mof.js"></script>
+	<script src="https://kit.fontawesome.com/3a2a4a84ed.js" crossorigin="anonymous">
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('.bxslider').bxSlider({
+				auto: true,
+				autoControls: false,
+				stopAutoOnClick: false,
+				pager: false,
+				controls: false,
+				/*버튼안보이게*/
+				slideWidth: 1800
+			});
+
+
+			$('.event_box_wrap > div:gt(0)').hide(); //첫번째 사진보이게하고
+			$('.evnt_btn a').on('click', function(e) {
+				e.preventDefault();
+				var num = $(this).index(); //자기 자신의 인덱스값을 넘에 넣어두고
+				$('.evnt_btn a.on').removeClass('on');
+				$(this).addClass('on');
+				$('.event_box_wrap > div').hide();
+				$('.event_box_wrap > div').eq(num).show();
+
+			})
+			/*유투브 qks*/
+			$(".youtube").fitVids();
+
+		});
+
+	</script>
+
+</head>
+
+<body>
+
+	<div id="all_wrap">
+		<div id="wrap">
+			<header id="header">
+				<h1 class="ta_c">
+					<img src="images/logo.png" alt="파리바게트" width="125" height="9" />
+				</h1>
+				<p class="gnb_menu">
+					<!--<span class="skip">메뉴</span>-->
+					<a href="#">
+						<span>1</span>
+						<span>2</span>
+						<span>3</span>
+					</a>
+				</p>
+			</header>
+			<div id="all_menu_wrap">
+
+
+
+			</div>
+			<div id="container_wrap">
+				<section class="visual">
+					<h2 class="skip">메인비주얼</h2>
+					<div class="visual_zone">
+						<ul class="visual_list bxslider">
+							<li><a href="#"><img src="images/section1_visual_1.png" alt="" width="316px" height="334px" /></a></li>
+							<li><a href="#"><img src="images/section1_visual_2.png" alt="" width="316px" height="334px" /></a></li>
+							<li><a href="#"><img src="images/section1_visual_3.png" alt="" width="316px" height="334px" /></a></li>
+						</ul>
+					</div>
+				</section>
+
+				<article class="story_wrap ">
+					<h3 class="skip">파리바게트 스토리</h3>
+					<div class="story_inner">
+						<div class="story1">
+							<h4>늘 한결같이</h4>
+							<p>가장 맛있고 건강한 빵으로 세상을 행복하게 만들겠다는 소중한 꿈, 단 하나의 빵도 소홀히 하지않겠다는 장인의 고집, 파리바게트의 정신입니다.</p>
+						</div>
+						<ul class="story2 clerafix">
+							<li>
+								<div class="story_list">
+									<a href="#">
+										<img src="images/section2_1_1.png" alt="" />
+									</a>
+								</div>
+								<div class="story_title">
+									<a href="#">
+										<p>CEO 인사말</p>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="story_list">
+									<a href="#">
+										<img src="images/section2_2_1.png" alt="" />
+									</a>
+								</div>
+								<div class="story_title">
+									<a href="#">
+										<p>행복한 나눔</p>
+									</a>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+				</article>
+
+				<section class="notice_wrap">
+					<div class="notice_inner">
+						<h3>News &amp; Notice</h3>
+						<p class="notice_p"><a href="#">행복한 파리바게트의 새로운 소식</a></p>
+						<div class="notice_list">
+							<ul class="bxslider">
+								<li><a href="#"><img src="images/section2_notico_1.png" atl="" />
+										<span>주식(主食)부터 카페문화까지</span>
+										<span>2020.10.11</span>
+									</a>
+								</li>
+								<li><a href="#"><img src="images/section2_notico_2.png" atl="" />
+										<span>주식(主食)부터 카페문화까지</span>
+										<span>2020.10.11</span>
+									</a>
+								</li>
+								<li><a href="#"><img src="images/section2_notico_3.png" atl="" />
+										<span>주식(主食)부터 카페문화까지</span>
+										<span>2020.10.11</span>
+									</a>
+								</li>
+								<li><a href="#"><img src="images/section2_notico_4.png" atl="" />
+										<span>주식(主食)부터 카페문화까지</span>
+										<span>2020.10.11</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					<!--	<div class="notice_btn">
+										<ul>
+											<li class="btn_prev"><a href="#"><i class="fas fa-arrow-left"></i>
+previous </a></li>
+											<li  class="btn_next"><a href="#"><i class="fas fa-arrow-right"></i> next</a></li>
+										</ul>
+									</div>-->
+					<div class="notice_more"><a href="#"><i class="far fa-file-alt"></i>전체 소식 보기</a></div>
+				</section>
+
+				<section class="event">
+					<h3>이벤트</h3>
+					<div class="event_box">
+						<div class="event_box_wrap">
+							<div class="event_img">
+								<img src="images/section3_event1.png" alt="" />
+							</div>
+							<div class="event_img">
+								<img src="images/section3_event2.png" alt="" />
+							</div>
+							<div class="event_img">
+								<img src="images/section3_event3.png" alt="" />
+							</div>
+						</div>
+						<div class="evnt_btn">
+							<a href="#" class="on">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+						</div>
+					</div>
+				</section>
+
+				<section class="products">
+					<h3>Products</h3>
+					<ul class="productsList clerafix">
+						<li><a href="#"><img src="images/section3_products1.png" alt="" /><span>시그니처 브레드</span><span>속 깊이 맛있어진 빵, 시그니처 브레드</span></a></li>
+						<li><a href="#"><img src="images/section3_products2.png" alt="" /><span>촉촉한 녹차케익</span><span>제주 녹차로 만든 촉촉한 딸기 케익 출시</span></a></li>
+						<li><a href="#"><img src="images/section3_products3.png" alt="" /><span>실키마카롱 출시</span><span>세상에서 가장 많이 팔린 실키마카롱 출시</span></a></li>
+						<li><a href="#"><img src="images/section3_products4.png" alt="" /><span>망고 생크림 케익</span><span>망고의 맛을 느낄 수있는 망고 생크림 케익</span></a></li>
+						<li><a href="#"><img src="images/section3_products5.png" alt="" /><span>호두 롤케익 </span><span>부드러운 스폰지케이크에 호두가 들어간 케익</span></a></li>
+						<li><a href="#"><img src="images/section3_products6.png" alt="" /><span>앙금 크림 화과자</span><span>부드러운 크림치즈 팥이 어우러진 디저트</span></a></li>
+					</ul>
+					<div class="notice_more"><a href="#"><i class="far fa-file-alt"></i>전체 소식 보기</a></div>
+				</section>
+
+				<div class="instagram_wrap">
+					<h3>@parisbaguette_kr</h3>
+					<p class="instagram"><a href="#">Instagram</a></p>
+					<ul class="clerafix">
+						<li><a href="#">
+								<img src="images/section4_instagram1.png" alt="" />
+							</a></li>
+						<li><a href="#">
+								<img src="images/section4_instagram2.png" alt="" />
+							</a></li>
+						<li><a href="#">
+								<img src="images/section4_instagram3.png" alt="" />
+							</a></li>
+						<li><a href="#">
+								<img src="images/section4_instagram4.png" alt="" />
+							</a></li>
+						<li><a href="#">
+								<img src="images/section4_instagram5.png" alt="" />
+							</a></li>
+						<li><a href="#">
+								<img src="images/section4_instagram6.png" alt="" />
+							</a></li>
+					</ul>
+				</div>
+				<div class="youtubewrap">
+					<h3>파리바게트TV</h3>
+					<ul class="clerafix">
+						<li>
+							<div class="youtube"> <iframe widfth="100%" height="100%" src="https://www.youtube.com/embed/a4fGq31S2cA?&amp;loop=1&amp;rel=0&amp;wmode=transparent&amp;showinfo=0&amp;iv_load_policy=3&amp;playlist=a4fGq31S2cA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+						</li>
+						<li>
+							<div class="youtube"> <iframe widfth="100%" height="100%" src="https://www.youtube.com/embed/ik6QjofM-dw?&amp;loop=1&amp;rel=0&amp;wmode=transparent&amp;showinfo=0&amp;iv_load_policy=3&amp;playlist=ik6QjofM-dw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+						</li>
+						<li>
+							<div class="youtube"> <iframe widfth="100%" height="100%" src="https://www.youtube.com/embed/pc1EbeenGFY?&amp;loop=1&amp;rel=0&amp;wmode=transparent&amp;showinfo=0&amp;iv_load_policy=3&amp;playlist=pc1EbeenGFY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+						 
+						</li>
+					</ul>
+					<div class="notice_more"><a href="#"><i class="far fa-file-alt"></i>전체 소식 보기</a></div>
+				</div>
+
+				<div class="related">
+					<h3>Related News</h3>
+					<ul>
+						<li class="related_list clerafix">
+							<div class="related_img">
+								<img src="images/section5_1.png" alt="" />
+							</div>
+							<div class="related_h4">
+								<a href="#">
+									<h4>상미종 생식빵으로 샌드위플 만들기</h4>
+									<span>2020년 10월 06일</span>
+								</a>
+							</div>
+						</li>
+						<li class="related_list clerafix">
+							<div class="related_img">
+								<img src="images/section5_2.png" alt="" />
+							</div>
+							<div class="related_h4">
+								<a href="#">
+									<h4>크래프트 크림치즈 베이커리 5종 출시</h4>
+									<span>2020년 10월 09일</span>
+								</a>
+							</div>
+						</li>
+						<li class="related_list clerafix">
+							<div class="related_img">
+								<img src="images/section5_3.png" alt="" />
+							</div>
+							<div class="related_h4">
+								<a href="#">
+									<h4>진한 가나슈 쇼콜라 케이크 출시</h4>
+									<span>2020년 10월 15일</span>
+								</a>
+							</div>
+						</li>
+						<li class="related_list clerafix">
+							<div class="related_img">
+								<img src="images/section5_4.png" alt="" />
+							</div>
+							<div class="related_h4">
+								<a href="#">
+									<h4>미각제빵소 효소빵 출시</h4>
+									<span>2020년 10월 27일</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+					<div class="notice_more"><a href="#"><i class="far fa-file-alt"></i>전체 소식 보기</a></div>
+				</div>
+				<!--<footer id="footer">
+					<section class="site_info">
+						<h3 class="skip">하단메뉴</h3>
+						<ul class="footer_menu">
+							<li><a href="#">오시는길</a></li>
+							<li><a href="#">PC버전</a></li>
+							<li><a href="#">맨위로</a></li>
+						</ul>
+					</section>
+					<p class="mt15">
+						서울특별시청 100-744 서울특별시 중구 세종대로110 <strong>[찾아오시는길]</strong>전화번호:02)120
+					</p>
+					<p class="copy mt5"><small>&copy;2020.Seoul Metropolitan Government all rights reserved</small></p>
+					<p class="mt10 webmark">
+						<img src="images/btn_wamark.gif" alt="웹접근성 우수사이트" width="53" height="38" />
+					</p>
+				</footer>-->
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
