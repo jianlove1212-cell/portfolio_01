@@ -1,95 +1,358 @@
+@charset "utf-8";
+@import url(reset.css);
+@import url(header.css);
+@import url(footer.css);
+@import url(style.css);
+
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5 {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.section1 #scMark {
+	position: absolute;
+	left: calc(50% - 10px);
+	bottom: 30px;
+	color: #1833ff;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 2px;
+	transition: 2s ease-out;
+	-webkit-transition: 2s ease-out;
+	-moz-transition: 2s ease-out;
+}
+
+.scMark_line {
+	position: relative;
+	margin: 0 0 10px 40%;
+	width: 1px;
+	height: 20px;
+	background: #1833ff;
+}
+
+
+.foot1 {
+	position: absolute;
+	left: -60px;
+	bottom: calc(50% - 30px);
+	height: 50px;
+	font-size: 13px;
+	letter-spacing: 1px;
+	color:
+		/* #4829fd;*/
+		#1833ff;
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+	opacity: 1;
+}
+
+
+.title {
+	position: relative;
+	padding-top: 10%;
+}
+
+.title .number {
+	text-transform: none;
+	position: absolute;
+	top: 3vw;
+	left: 3vw;
+	display: block;
+	font-size: 1.8vw;
+	color: rgb(25, 25, 25);
+	font-weight: 600;
+	font-family: 'Bentham', serif;
+}
+
+.title .number span {
+	font-family: 'Noto Serif', serif;
+	font-size: 1.9vw
+}
+
+.title h2 {
+	position: relative;
+	z-index: 999;
+	display: block;
+	font-size: 7vw;
+	line-height: 1.025em;
+	margin: 0 0 0 19%;
+	width: 68.28287722%;
+	font-weight: 900;
+	font-family: 'Bentham', serif;
+}
+
+.section6 .title h2 span {
+	font-size: 10vw;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	text-transform: uppercase;
+	margin-bottom: 2%;
+
+}
+
+.section6 .title {
+	padding-top: 15%
+}
+
+.section6 h2 {
+	font-size: 6.5vw;
+
+	margin-left: 29%;
+	text-transform: none;
+	color: #8d8d8d;
+
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+}
+
+
+
+
+/*
+
+.section6 .title h2 {
+	font-size: 6vw; 
+	font-weight: 900;
+	font-family: 'Nanum Gothic', '나눔고딕', '돋움', dotum, sans-serif;  
+	text-transform: none;
+	margin-bottom: 2%;
+	color: #fff;
+	margin: 20% 0 75px 20%;
+}
+
+*/
+
+/*.section3 ,.section3 h2 a,.section3 .title .number{color: #fff}*/
+.title .line {
+	display: block;
+	margin: 3% 0 3% 19%;
+
+	height: 4px;
+	width: 15.5405%;
+	background-color: rgb(100, 54, 255);
+
+}
+
+/*
+.section3 .title .line{
+ background-color:#ff3366#fff;
+}
+
+.section4 .title .line{
+ background-color:#c6e1e8;
+}
+
+.section5 .title .line{
+ background-color:#4264fb;
+
+}
+*/
+
+
+
+.section6 {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+.title_inner {
+	width: 24%;
+	margin: 0 0 0 19%;
+}
+
+.title p {
+	font-size: 1.1vw;
+	letter-spacing: -1;
+	font-weight: lighter;
+
+	line-height: 1.8;
+	font-weight: 400;
+}
+
+.title .title_em {
+	font-weight: 900;
+	margin-top: 1.6%;
+}
+
+.title_img {
+	/*position: absolute; bottom: 18%;right: 8%;*/
+	box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 16%;
+	right: 18%
+}
+
+.title_img_Phone {
+	/*position: absolute; bottom: 10%;right: -20%;*/
+	/* box-shadow: 25px 25px 25px rgba(0, 0, 0, .2);*/
+	box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 16%;
+	right: 18%
+}
+
+.title_img_Phone img {
+	/*width: 76%;display: block;    animation:title_img 7s ease-in-out infinite alternate;*/
+	width: 100%;
+	display: block;
+	animation: title_img 7s ease-in-out infinite alternate;
+}
+
+.title_img a img {
+	width: 100%;
+	display: block;
+	animation: title_img 7s ease-in-out infinite alternate;
+}
+
+
+@keyframes title_img {
+	0% {
+		transform: rotate(0deg) translate(0px, 0)
+	}
+
+	20% {
+		transform: rotate(0deg) translate(10px, 10px)
+	}
+
+	50% {
+		transform: rotate(0deg) translate(0px, 0px)
+	}
+
+	70% {
+		transform: rotate(0deg) translate(-1px, 10px)
+	}
+
+	100% {
+		transform: rotate(0deg) translate(0px, 0)
+	}
+}
+
+
+/*footer*/
+.footer {
+	width: 100%;
+	height: 6vw;
+	background-color: #b5b5b5;
+	position: absolute;
+	bottom: 0;
+}
+
+.footer ul li {
+	font-size: 1vw;
+	font-weight: 700;
+	text-align: center;
+	line-height: 6vw;
+	color: rgb(255, 255, 255)
+}
+
 /* ============================
-   📌 Full Responsive System
-   XL + Desktop + Tablet + Mobile
+   UX 중심 모바일 최적화 스타일
 =============================== */
+@media screen and (max-width: 768px) {
 
-/* 🟣 Desktop Large (1440px↑) */
-@media screen and (min-width: 1440px) {
-    .title h2 {
-        font-size: 3.4vw;
-    }
-    .title_inner p {
-        font-size: 1.05vw;
-    }
-}
-
-/* 🔵 Desktop Standard (1025~1439px) */
-@media screen and (min-width: 1025px) and (max-width: 1439px) {
-    html { font-size: 16px; }
-    .title h2 { font-size: 3.8vw; }
-    .title_inner p { font-size: 1.1vw; }
-}
-
-/* 🟡 Tablet (768~1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    html { font-size: 17px; }
-    section { padding: 100px 6% 80px; }
-
-    .title h2 {
-        font-size: 4.5vw;
-        width: 95%;
-        line-height: 1.3;
-        margin: 40px 0 20px 0;
+    html {
+        font-size: 18px;
+        scroll-behavior: smooth;
     }
 
-    .title_inner p {
-        font-size: 1.35vw;
-        line-height: 1.75;
+    body {
+        line-height: 1.8;
+    }
+
+    /* 제목 영역 */
+    .title {
+        padding: 22% 5% 10%;
+        text-align: left;
+    }
+
+    .title .number {
+        font-size: 16px;
+        top: 16px;
+        left: 16px;
         color: #222;
     }
-
-    .title_img img,
-    .title_img_Phone img {
-        width: 90%;
-        height: auto;
-    }
-
-    .title_img,
-    .title_img_Phone {
-        position: static;
-        margin: 32px auto 0;
-        text-align: center;
-    }
-
-    .foot1, #scMark { display: none; }
-}
-
-/* 🟢 Mobile (0~767px) */
-@media screen and (max-width: 767px) {
-    html { font-size: 16px; }
-    section { padding: 80px 6% 60px; }
 
     .title h2 {
         font-size: 32px;
+        margin: 40px 0 18px 0;
+        width: auto;
+        font-weight: 900;
+        color: #111;
         line-height: 1.3;
-        width: 100%;
-        margin: 32px 0 18px 0;
     }
 
-    .title_inner,
-    .title p {
-        width: 100%;
+    .title .line {
+        width: 40%;
+        height: 3px;
+        margin-left: 0;
+        background-color: #1833ff;
+    }
+
+    /* 본문 */
+    .title_inner {
+        width: auto;
         margin: 0;
-        font-size: 15px;
-        line-height: 1.7;
-        color: #222;
     }
 
+    .title_inner p,
+    .title p {
+        font-size: 16px;
+        color: #222;
+        letter-spacing: -0.2px;
+    }
+
+    .title .title_em {
+        margin-top: 14px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #1833ff;
+    }
+
+    /* 이미지 아래 배치 */
     .title_img,
     .title_img_Phone {
         position: static;
-        width: 100%;
-        margin: 20px 0;
-        text-align: center;
+        margin: 22px auto 0;
+        width: 92%;
+        box-shadow: 14px 14px 25px rgba(0,0,0,.25);
     }
 
     .title_img img,
     .title_img_Phone img {
         width: 100%;
-        height: auto;
         animation: none;
     }
 
-    /* 스크롤/측면 요소 제거 */
-    .foot1, #scMark { display: none; }
-}
+    /* Scroll 안내 제거로 집중도 ↑ */
+    #scMark {
+        display: none;
+    }
+
+    /* Thanks 영역 */
+    .section6 .title h2 span {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .section6 h2 {
+        font-size: 26px;
+        margin-left: 0;
+    }
+
+    /* footer */
+    .footer {
+        height: auto;
+        padding: 14px 0;
+        text-align: center;
+    }
+
+    .footer ul li {
