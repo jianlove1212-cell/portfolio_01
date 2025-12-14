@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 뷰포트 설정을 추가하여 반응형 디자인을 활성화합니다. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성혜경 포트폴리오 섹션</title>
+    <!-- Tailwind CSS CDN을 로드합니다. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 기본 폰트와 배경색을 설정하고 스크롤 컨테이너를 정의합니다. */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* 콘텐츠가 위에서 시작하도록 조정 */
+        }
+        /* 이미지 플레이스홀더를 반응형으로 만듭니다. */
+        .responsive-image-placeholder {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 메인 컨테이너: 화면을 채우고 내용을 중앙에 배치합니다. -->
+    <div id="main" class="w-full py-12 px-4 md:px-8">
+        <!-- 섹션 컨테이너: 최대 너비를 설정하여 데스크톱에서 너무 넓어지지 않도록 합니다. -->
+        <section class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-2xl transition duration-300 hover:shadow-3xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6 border-b-4 border-indigo-500 pb-2">
+                포트폴리오: 화장품 상세페이지
+            </h1>
+            <p class="text-gray-600 mb-8 text-lg">
+                화장품 상세페이지입니다. 상세페이지에 사용한 이미지는 AI로 생성한 이미지를 사용해서 만든 상세페이지입니다. 앰플을 사용하면 콜라겐이 차오르는 느낌을 주려고 디자인했습니다. 고화질 이미지로 프리미엄 분위기를 조성했습니다. 구매 욕구를 자극하도록 설계되었습니다.
+            </p>
+            
+            <!-- 콘텐츠 영역: 이미지 플레이스홀더 (원본 이미지 대체) -->
+            <div class="flex justify-center items-center">
+                <!--
+                    원본 이미지 경로 'images/ptimg_02_1.png' 대신,
+                    반응형 레이아웃을 시뮬레이션하기 위해 placehold.co를 사용했습니다.
+                    이 이미지는 모바일에서는 화면 너비에 맞춰지고, 데스크톱에서는 최대 너비(여기서는 800px)를 유지합니다.
+                -->
+                <img
+                    src="images/ptimg_01_1.png"
+                    alt="과일 상세페이지 반응형 디자인"
+                    class="responsive-image-placeholder w-full max-w-xl transition duration-500 transform hover:scale-[1.01]"
+                    onerror="this.onerror=null; this.src='https://placehold.co/800x1200/9CA3AF/ffffff?text=Image%20Not%20Found';"
+                />
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <p class="text-sm text-gray-400">
+                
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
